@@ -58,19 +58,19 @@ def calculate_p25i(PM25):
 def calculate_oi(o3):
     oi=0
     if(o3>54):
-        oi=o3*50/54
+        oi=o3*50/108
     elif(o3>54 and o3<=70):
-        oi=55+o3*49/15    
+        oi=55+(o3/2-55)*49/15    
     elif(o3>70 and o3<=85):
-        oi=101+o3*49/14 
+        oi=101+(o3/2-71)*49/14 
     elif(o3>85 and o3<=105):
-        oi=151+o3*49/19
+        oi=151+(o3/2-86)*49/19
     elif(o3>105 and o3<=200):
-        oi=201+o3*99/94
-    '''elif(o3>200 and o3<=504):  #error
-        oi=301+o3*99/99
+        oi=201+(o3/2-105)*99/94
+    elif(o3>200 and o3<=504):  
+        oi=301+(o3/2-201)*99/99
     else:
-        oi=401+o3*99/99'''
+        oi=401+(o3/2-505)*99/99
     return oi
     
 def calculate_p10i(PM10):
@@ -78,36 +78,36 @@ def calculate_p10i(PM10):
     if(PM10<=54):
         p10i=PM10*50/54
     elif(PM10>54 and PM10<=154):
-        p10i=51+PM10*49/99
+        p10i=51+(PM10-55)*49/99
     elif(PM10>154 and PM10<=254):
-        p10i=101+PM10*49/99
+        p10i=101+(PM10-155)*49/99
     elif(PM10>254 and PM10<=354):
-        p10i=151+PM10*49/99
+        p10i=151+(PM10-255)*49/99
     elif(PM10>354 and PM10<=424):
-        p10i=201+PM10*99/69
+        p10i=201+(PM10-355)*99/69
     elif(PM10>424 and PM10<=504):
-        p10i=301+PM10*99/79
+        p10i=301+(PM10-425)*99/79
     else:
-        p10i=401+PM10*99/99
+        p10i=401+(PM10-505)*99/99
     return p10i
     
     
 def calculate_coi(co):
     coi=0
-    if(co>=4.4):
-        coi=co+50/4.4
+    if(co<=4.4):
+        coi=co/1.145*50/4.4
     elif(co>4.4 and co<=9.4):
-        coi=51+co*49/4.9
+        coi=51+(co/1.145-4.5)*49/4.9
     elif(co>9.4 and co<=12.4):
-        coi=101+co*49/2.9
+        coi=101+(co/1.145-9.5)*49/2.9
     elif(co>12.4 and co<=15.4):
-        coi=151+co*49/2.9
+        coi=151+(co/1.145-12.5)*49/2.9
     elif(co>15.4 and co<=30.4):
-        coi=201+co*99/14.9
+        coi=201+(co/1.145-15.5)*99/14.9
     elif(co>30.4 and co<=40.4):
-        coi=301+co*99/9.9
+        coi=301+(co/1.145-30.5)*99/9.9
     else:
-        coi=401+co*99/9.9
+        coi=401+(co/1.145-40.5)*99/9.9
     return coi
    
 #function to calculate the air quality index (AQI) of every data value
